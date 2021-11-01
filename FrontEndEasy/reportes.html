@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Easy</title>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/carrito.css" />
+    <link rel="stylesheet" href="css/modal.css"/>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+  <script>
+    $( function() {
+      var dateFormat = "mm/dd/yy",
+        from = $( "#from" )
+          .datepicker({
+            defaultDate: "+1w",
+            changeMonth: true,
+            numberOfMonths: 3
+          })
+          .on( "change", function() {
+            to.datepicker( "option", "minDate", getDate( this ) );
+          }),
+        to = $( "#to" ).datepicker({
+          defaultDate: "+1w",
+          changeMonth: true,
+          numberOfMonths: 3
+        })
+        .on( "change", function() {
+          from.datepicker( "option", "maxDate", getDate( this ) );
+        });
+   
+      function getDate( element ) {
+        var date;
+        try {
+          date = $.datepicker.parseDate( dateFormat, element.value );
+        } catch( error ) {
+          date = null;
+        }
+   
+        return date;
+      }
+    } );
+    </script>
+  </head>
+  <body>
+    <div class="wrapper d-flex align-items-stretch">
+      <nav id="sidebar" class="">
+        <h1><a href="index.html" class="logo"><img src="images/logoEasyGanador.jpeg" style="height: 80px; width: 80px;" alt=""></a></h1>
+        <ul class="list-unstyled components mb-5">
+          <div class="accordion"  id="accordionExample">
+            <div class="card" style="background-color: #b21d19;">
+              <div class="card-header" id="headingCero" >
+                <h2 class="mb-0">
+                  <a href="index.html" class="collapsed" style="font-size: large; color: white;"><span class="fa fa-home pl-0"></span> Home</a>
+                </h2>
+              </div>
+            </div>
+            <div class="card" style="background-color: #b21d19;">
+              <div class="card-header" id="headingOne" >
+                <h2 class="mb-0">
+                  <a href="#" class="collapsed" style="font-size: large; color: white;" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne"><span class="fa fa-user"></span> Usuarios</a>
+                </h2>
+              </div>
+          
+              <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                <div class="card-body" style="background-color: #af271d;">
+                  <div class="mb-3">
+                    <a href="registroUsuario.html" style="color: white;font-size: 16px;"><span class="fa fa-user"></span> Registro Usuario</a>
+                  </div>
+                  <div>
+                    <a href="listadoUsuarios.html" style="color: white;font-size: 16px;"><span class="fa fa-list-ul"></span> Listado Usuarios</a>
+                  </div>
+                   
+                  
+                </div>
+              </div>
+            </div>
+            <div class="card" style="background-color: #b21d19;">
+              <div class="card-header" id="headingTwo">
+                <h2 class="mb-0">
+                  <a href="#" class="collapsed" style="font-size: large; color: white;" data-toggle="collapse" data-target="#collapseTwo"><span class="fa fa-cc-amex"></span> Clientes</a>
+                </h2>
+              </div>
+              <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                <div class="card-body" style="background-color: #af271d;">
+                  <div class="mb-3">
+                    <a href="registoClientes.html" style="color: white;font-size: 16px;"><span class="fa fa-user"></span> Registro Cliente</a>
+                  </div>
+                  <div class="mb-3">
+                    <a href="modificarCliente.html" style="color: white;font-size: 16px;"><span class="fa fa-pencil"></span> Modificar Datos</a>
+                  </div>
+                  <div>
+                    <a href="listadoClientes.html" style="color: white;font-size: 16px;"><span class="fa fa-list-ul"></span> Listado Clientes</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card" style="background-color: #b21d19;">
+              <div class="card-header" id="headingThree">
+                <h2 class="mb-0">
+                  <a href="#" class="collapsed" style="font-size: large; color: white;" data-toggle="collapse" data-target="#collapseThree"><span class="fa fa-shopping-cart"></span> Productos</a>
+                </h2>
+              </div>
+              <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                <div class="card-body" style="background-color: #af271d;">
+                  <div class="mb-3">
+                    <a href="registroProducto.html" style="color: white;font-size: 16px;"><span class="fa fa-tags"></span> Registro Producto</a>
+                  </div>
+                  <div class="mb-3">
+                    <a href="listadoProductos.html" style="color: white;font-size: 16px;"><span class="fa fa-list-ul"></span> Listado Productos</a>
+                  </div>
+                  <div>
+                    <a href="CatalogoProductos.html" style="color: white;font-size: 16px;"><span class="fa fa-th-large"></span> Ver Catálogo</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card" style="background-color: #b21d19;">
+              <div class="card-header" id="headingFour">
+                <h2 class="mb-0">
+                  <a href="#" class="collapsed" style="font-size: large; color: white;" data-toggle="collapse" data-target="#collapseFour"><span class="fa fa-bar-chart"></span> Reportes</a>
+                </h2>
+              </div>
+              <div id="collapseFour" class="collapse"  aria-labelledby="headingThree" data-parent="#accordionExample">
+                <div class="card-body" style="background-color: #af271d;">
+                  <div class="mb-3">
+                    <a href="reportes.html" style="color: white;font-size: 16px;"><span class="fa fa-line-chart"></span> Reporte 1</a>
+                  </div>
+                  <div>
+                    <a href="#" style="color: white;font-size: 16px;"><span class="fa fa-pie-chart"></span> Reporte 2</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </ul>
+        
+
+        
+      </nav>
+
+      <!-- Page Content  -->
+      <div id="content" class="p-md-2">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <div class="container-fluid">
+            <!-- <button
+              type="button"
+              id="sidebarCollapse"
+              class="btn"
+              style="background-color: #b21d19"
+            >
+              <i class="fa fa-bars"></i>
+              <span class="sr-only">Toggle Menu</span>
+            </button>
+            <button
+              class="btn btn-dark d-inline-block d-lg-none ml-auto"
+              type="button"
+              data-toggle="collapse"
+              data-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <i class="fa fa-bars"></i>
+            </button> -->
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="nav navbar-nav ml-auto">
+                <li class="nav-item active mt-1" style="color: #b21d19">
+                  <i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i>
+                </li>
+                <li class="nav-item">
+                  <a href="carritoCompras.html" class="nav-link"> Carrito de compras</a>
+                </li>
+                <li class="nav-item active mt-1" style="color: #b21d19">
+                  <i class="fa fa-user fa-2x" aria-hidden="true"></i>
+                </li>
+                <li class="nav-item">
+                  <a href="login2.html" class="nav-link"> Ingresar</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+
+        <div>
+          <img
+            src="https://media.easy.com.ar/is/image/EasyArg/header_seguridadinformatica"
+            class="mb-3"
+            style="width: 100%"
+            alt=""
+          />
+        </div>
+
+        <!-- <div class="container">
+          <h3>Sección Reportes</h3>
+            <h5 style="display: inline-block;" class="mr-2">Productos más vendidos Mensualmente</h5>
+            <div class="form-group" style="display: inline-block;">
+                 
+                <select class="form-control" style="width: 120%;" id="exampleFormControlSelect1">
+                  <option disabled selected>Elija un Mes...</option>
+                  <option>Enero</option>
+                  <option>Febrero</option>
+                  <option>Marzo</option>
+                  <option>Abril</option>
+                  <option>Mayo</option>
+                  <option>Junio</option>
+                  <option>Julio</option>
+                  <option>Agosto</option>
+                  <option>Septiembre</option>
+                  <option>Octubre</option>
+                  <option>Noviembre</option>
+                  <option>Diciembre</option>
+                </select>
+              </div>
+          <div class="row">
+            <div class="col-12">
+              <div class="card" >
+                <table class="table table-hover">
+                  <thead>
+                    <tr>
+                      
+                      <th scope="col">Producto</th>
+                      <th scope="col">Precio Unitario</th>
+                      <th scope="col">Cantidad</th>
+                      <th scope="col">Marca</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      
+                      <td>Silla Aluminio</td>
+                      <td>$6.291</td>
+                      <td>70</td>
+                      <td>OUTZEN</td>
+                    </tr>
+                    <tr>
+                      
+                      <td>Lampara Colgante</td>
+                      <td>$5.550</td>
+                      <td>43</td>
+                      <td>Abitare</td>
+                      
+                    </tr>
+                    <tr>
+                      
+                      <td>Mesa Atril</td>
+                      <td>$24.990</td>
+                      <td>26</td>
+                      <td>M+Design</td>
+                      
+                    </tr>
+                    <tr>
+                        
+                        <td>Latex Interior</td>
+                        <td>$16.265</td>
+                        <td>20</td>
+                        <td>Sherwin Williams</td>
+                      </tr>
+                  </tbody>
+                </table>
+              </div>
+              <button type="button" class="btn btn-secondary mt-4">Imprimir</button>
+            </div>
+
+            
+          </div> -->
+          
+        <!-- </div>-->
+
+        <!-- Tabla 2 -->
+        
+        <div class="container">
+            <h3>Sección Reportes</h3>
+              <h5 style="display: inline-block;" class="mr-2">Total Facturado por rango de Fechas</h5>
+              <div class="form-group" style="display: inline-block;">
+                <label for="from">Desde</label>
+                <input type="text" id="from" name="from">
+                <label for="to">Hasta</label>
+                <input type="text" id="to" name="to">
+                </div>
+            <div class="row">
+              <div class="col-12">
+                <div class="card" style="display: inline-block;">
+                  <h4 class="mr-3 ml-2" style="display: inline-block;">Total Facturado:</h4>
+                  <h1 style="display: inline-block; width: 870px;">$10.552.335</h1>
+                </div>
+                <button type="button" class="btn btn-secondary mt-4">Imprimir</button>
+              </div>
+  
+              
+            </div>
+            
+          </div>
+
+        <!-- Fin Tabla 2 -->
+
+          <!-- <div class="container">
+          <h3>Sección Reportes</h3>
+            <h5 style="display: inline-block;" class="mr-2">Grafico de Formas de Pago más utilizadas</h5>
+            
+          <div class="row">
+            <div class="col-12">
+              <div class="card" >
+                <img src="images/REPORTE GRAFICO (1).png" alt="">
+              </div>
+              <button type="button" class="btn btn-secondary mt-4">Imprimir</button>
+            </div>
+            
+            
+          </div> -->
+
+
+
+
+
+
+        <!-- Footer -->
+        <footer class="page-footer font-small darken-3 mt-3" style="background-color: #d3d3d3;">
+
+          <!-- Footer Elements -->
+          <div class="container">
+
+            <!-- Grid row-->
+            <div class="row">
+
+              <!-- Grid column -->
+              <div class="col-md-12 py-5">
+                <div class="mb-5 d-flex justify-content-center">
+
+                  <!-- Facebook -->
+                  <a class="fb-ic" target="_blank" href="https://www.facebook.com/easyargentina">
+                    <i class="fa fa-facebook fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+                  </a>
+                  <!-- Twitter -->
+                  <a class="tw-ic" target="_blank" href="https://twitter.com/EasyArg">
+                    <i class="fa fa-twitter fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+                  </a>
+                  <!-- Google +-->
+                  <a class="gplus-ic" target="_blank" target="_blank" href="https://www.youtube.com/channel/UC4S-b0kYlcd1WdWxvErWuvA">
+                    <i class="fa fa-youtube fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+                  </a>
+                  <!--Instagram-->
+                  <a class="ins-ic" target="_blank" href="https://www.instagram.com/easyargentina/?hl=es">
+                    <i class="fa fa-instagram fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+                  </a>
+                  <!--Pinterest-->
+                  <a class="pin-ic" target="_blank" href="https://ar.pinterest.com/easyargentina/_created/">
+                    <i class="fa fa-pinterest fa-lg white-text fa-2x"> </i>
+                  </a>
+                </div>
+              </div>
+              <!-- Grid column -->
+
+            </div>
+            <!-- Grid row-->
+
+          </div>
+          <!-- Footer Elements -->
+
+          <!-- Copyright -->
+          <div class="text-center py-3" style="background-color: #808080; color: white;">© 2020 Copyright:
+            <a href="https://mdbootstrap.com/" style="color: white;"> MDBootstrap.com</a>
+          </div>
+          <!-- Copyright -->
+
+        </footer>
+        <!-- Footer -->
+        
+
+        
+      </div>
+    </div>
+
+    <!-- <script src="js/jquery.min.js"></script> -->
+    <script src="js/popper.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/formaPago.js"></script>
+    
+  </body>
+</html>

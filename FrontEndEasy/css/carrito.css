@@ -1,0 +1,12 @@
+.adelete{
+    color: black;
+}
+
+.adelete:hover {
+    border-bottom: 1px solid;
+    color: #b21d19;
+}
+
+input[type=number]::-webkit-inner-spin-button {
+    opacity: 1;
+  }
