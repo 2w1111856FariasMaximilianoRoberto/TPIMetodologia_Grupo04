@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using ProyectoEasy.Aplicacion.Servicios.Dtos;
 using ProyectoEasy.Domain.Entities;
 using ProyectoEasy.Servicios.Dtos;
 
@@ -15,5 +16,7 @@ namespace ProyectoEasy.Aplicacion.Servicios
         Task Eliminar(int id);
         Task<bool> ExisteNombreUsuario(string nomUsu);
         Task<bool> ExisteEmail(string email);
+
+        Task<UsuarioSesionDto> Login(LoginUsuarioDto login);
     }
 }

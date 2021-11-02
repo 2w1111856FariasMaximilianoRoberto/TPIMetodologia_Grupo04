@@ -1,9 +1,14 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
+using ProyectoEasy.Aplicacion.Servicios.Dtos;
 using ProyectoEasy.Domain.Entities;
 using ProyectoEasy.Infraestructura;
 using ProyectoEasy.Servicios.Dtos;
 using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -12,9 +17,11 @@ namespace ProyectoEasy.Aplicacion.Servicios
     public class UsuarioServicio : IUsuarioServicio
     {
         private readonly PedidosEasyContext _context;
-        public UsuarioServicio(PedidosEasyContext context)
+        private readonly IConfiguration _configuration;
+        public UsuarioServicio(PedidosEasyContext context, IConfiguration configuration)
         {
             _context = context;
+            _configuration = configuration;
         }
 
 
@@ -145,6 +152,57 @@ namespace ProyectoEasy.Aplicacion.Servicios
             {
                 return false;
             }
+        }
+
+
+        public async Task<UsuarioSesionDto> Login(LoginUsuarioDto login)
+        {
+            var resultado = await _context.Usuarios.SingleOrDefaultAsync(x => x.NombreUsuario == login.NombreUsuario && x.Contraseña == login.Contraseña);
+
+            var rol = await _context.TipoRoles.SingleOrDefaultAsync(x => x.IdTipoRol == resultado.IdRol);
+
+            if (resultado != null)
+            {
+                var usuarioSesion = new UsuarioSesionDto
+                {
+                    Nombre = resultado.Nombre,
+                    Apellido = resultado.Apellido,
+                    NombreUsuario = resultado.NombreUsuario,
+                    Email = resultado.Email,
+                    Rol = rol.Descripcion,
+                    Token = CrearToken(resultado)
+                };
+                return usuarioSesion;
+            }
+            else
+            {
+                throw new NullReferenceException();
+            }
+        }
+
+        private string CrearToken(Usuarios u)
+        {
+            var claims = new List<Claim>
+            {
+                new Claim(ClaimTypes.NameIdentifier, u.IdUsuario.ToString()),
+                new Claim(ClaimTypes.Name, u.NombreUsuario)
+            };
+
+            var key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(_configuration.GetSection("AppSettings:Token").Value));
+
+            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
+
+            var tokenDescriptor = new SecurityTokenDescriptor
+            {
+                Subject = new ClaimsIdentity(claims),
+                Expires = DateTime.Now.AddDays(1),
+                SigningCredentials = creds
+            };
+
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var token = tokenHandler.CreateToken(tokenDescriptor);
+
+            return tokenHandler.WriteToken(token);
         }
     }
 

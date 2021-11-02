@@ -24,7 +24,7 @@
                 </h2>
               </div>
             </div>
-            <div class="card" style="background-color: #b21d19;">
+            <div class="card" style="background-color: #b21d19;" id="divUsuario">
               <div class="card-header" id="headingOne" >
                 <h2 class="mb-0">
                   <a href="#" class="collapsed" style="font-size: large; color: white;" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne"><span class="fa fa-user"></span> Usuarios</a>
@@ -52,13 +52,13 @@
               </div>
               <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
                 <div class="card-body" style="background-color: #af271d;">
-                  <div class="mb-3">
+                  <div class="mb-3" id="divRegistroCliente">
                     <a href="registoClientes.html" style="color: white;font-size: 16px;"><span class="fa fa-user"></span> Registro Cliente</a>
                   </div>
-                  <div class="mb-3">
+                  <div class="mb-3" id="divModificarCliente">
                     <a href="modificarCliente.html" style="color: white;font-size: 16px;"><span class="fa fa-pencil"></span> Modificar Datos</a>
                   </div>
-                  <div>
+                  <div id="divListadoCliente">
                     <a href="listadoClientes.html" style="color: white;font-size: 16px;"><span class="fa fa-list-ul"></span> Listado Clientes</a>
                   </div>
                 </div>
@@ -72,10 +72,10 @@
               </div>
               <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
                 <div class="card-body" style="background-color: #af271d;">
-                  <div class="mb-3">
+                  <div class="mb-3" id="divRegistroProducto">
                     <a href="registroProducto.html" style="color: white;font-size: 16px;"><span class="fa fa-tags"></span> Registro Producto</a>
                   </div>
-                  <div class="mb-3">
+                  <div class="mb-3" id="divListadoProducto">
                     <a href="listadoProductos.html" style="color: white;font-size: 16px;"><span class="fa fa-list-ul"></span> Listado Productos</a>
                   </div>
                   <div>
@@ -84,7 +84,7 @@
                 </div>
               </div>
             </div>
-            <div class="card" style="background-color: #b21d19;">
+            <div class="card" style="background-color: #b21d19;" id="divReporte">
               <div class="card-header" id="headingFour">
                 <h2 class="mb-0">
                   <a href="#" class="collapsed" style="font-size: large; color: white;" data-toggle="collapse" data-target="#collapseFour"><span class="fa fa-bar-chart"></span> Reportes</a>
@@ -104,9 +104,6 @@
           </div>
 
         </ul>
-        
-
-        
       </nav>
 
         <!-- Page Content  -->
@@ -114,14 +111,9 @@
 
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
           <div class="container-fluid">
-
-            <!-- <button type="button" id="sidebarCollapse" class="btn" style="background-color: #b21d19;">
-              <i class="fa fa-bars"></i>
-              <span class="sr-only">Toggle Menu</span>
-            </button>
             <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="fa fa-bars"></i>
-            </button> -->
+            </button>
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="nav navbar-nav ml-auto">
@@ -134,9 +126,18 @@
               <li class="nav-item active mt-1" style="color: #b21d19;">
                 <i class="fa fa-user fa-2x" aria-hidden="true"></i>
               </li>
-              <li class="nav-item">
+              <li class="nav-item" id="ingreso" >
                 <a href="login2.html" class="nav-link"> Ingresar</a>
-            </li>
+             </li>
+             <li class="nav-item" id="divBienvenido" >
+              <p id="bienvenido" class="mt-2 ml-2"></p>
+             </li>
+             <li id="divSalir" class="nav-item active mt-1 ml-2" style="color: #b21d19;">
+              <i class="fa fa-sign-out fa-2x" aria-hidden="true"></i>
+             </li>
+             <li class="nav-item" id="divSalirText" >
+              <a href="index.html" id="salir" class="nav-link">Salir</a>
+             </li>
               </ul>
             </div>
           </div>
@@ -269,5 +270,6 @@
     <script src="js/popper.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/masDetalle.js"></script>
   </body>
 </html>

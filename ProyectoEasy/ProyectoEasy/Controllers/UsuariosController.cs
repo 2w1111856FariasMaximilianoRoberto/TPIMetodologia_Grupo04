@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ProyectoEasy.Aplicacion.Dto;
 using ProyectoEasy.Aplicacion.Servicios;
+using ProyectoEasy.Aplicacion.Servicios.Dtos;
 using ProyectoEasy.Domain.Entities;
 using ProyectoEasy.Servicios.Dtos;
 using System;
@@ -177,6 +178,33 @@ namespace ProyectoEasy.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+
+
+        [HttpPost("Login")]
+        public async Task<ActionResult> Login(LoginUsuarioDto login)
+        {
+            try
+            {
+                var usuario = await _usuarioServicio.Login(login);
+                if (usuario != null)
+                {
+                    return Ok(usuario);
+                }
+                else
+                {
+                    return NoContent();
+                }
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest(ex.Message);
+            }
+
+        }
+
+
 
 
         //[HttpGet("{username}/{password}")]
