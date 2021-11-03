@@ -39,8 +39,17 @@ document.addEventListener("DOMContentLoaded", function(event) {
         bienvenido.innerText = 'Bienvenido/a ' + JSON.parse(objetoCliente).nombreCliente;
     }
     
-
-
+    $.ajax({
+        url: "https://localhost:44375/Produtos",
+        type: "GET",
+        success: function (data){ 
+            cargarCard(data);
+        },
+        error: function(error){
+            console.log(error);
+        }
+    });
+         
 
 
 
@@ -52,4 +61,42 @@ salir.addEventListener('click', cerrarSesion);
 
 function cerrarSesion(){
     localStorage.removeItem('objetoCliente');
+}
+
+
+
+
+
+
+
+          
+
+
+
+
+function cargarCard(data) {
+    console.log(data);
+    console.log(imagenes);
+    // for (let i = 0; i < imagenes.length; i++) {
+        for (let j = 0; j < data.length; j++) {
+            const imagen = imagenes.find(o => o.idProducto === data[j].idProducto);
+            if (imagen) {
+                let html = "<div class='col-3 mt-2' >";
+                html += "<div class='card'  style='width: 16rem;'>";
+                html += "<img src="+imagen.png+" class='card-img-top'>";
+                html += "<div class='card-body'>";
+                html += "<h5 class='card-title'>"+data[j].descripcion+"</h5>";
+                html += "<strong class='mr-4' style='font-size: larger;'>"+data[j].precioVenta+"</strong>";
+                html += `<a href=masDetalle.html?idProducto=${data[j].idProducto} class='btn btn-primary'>Mas detalles...</a>`;
+                html += "</div>";
+                html += "</div>";
+                html += "</div>";
+
+                $("#cardProductos").append(html);
+            }
+            
+        }
+    // }
+    
+    console.log(imagenes);
 }

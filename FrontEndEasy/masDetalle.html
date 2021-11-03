@@ -148,8 +148,8 @@
         <div class="container">
             <h3>Detalles de Producto</h3>
            <div class="row">
-                <div class="col-8">
-                    <div class="card" style="width: 47.5rem;">
+                <div class="col-8" id="cardDetalle">
+                    <!-- <div class="card" style="width: 47.5rem;">
                         <img src="images/parrillaGas.jpeg" class="card-img-top" alt="...">
                         <div class="card-body">
                           <h5 class="card-title">Parrilla a Gas Patagonia 5Q inoxidable</h5>
@@ -163,16 +163,16 @@
                           <li class="list-group-item">Uso: 10 a 12 comensales</li>
                           <li class="list-group-item">Modelo: 5Q</li>
                         </ul>
-                    </div>
+                      </div> -->
                 </div>
                 <div class="col-4">
                     <div class="card">
                         <div class="card-body">
-                          <h5 class="card-title" style="font-size: xx-large;">Parrilla a Gas Patagonia 5Q inoxidable</h5>
-                          <h2>$170.091</h2>
+                          <h5 class="card-title" id="tituloProducto" style="font-size: xx-large;"></h5>
+                          <h2 id="precioProducto">$</h2>
                           <h6 style="color: black;">Cantidad</h6>
                           <input class="form-control mb-4" type="number" value="0" style="width: 100px;">
-                          <button type="button" class="btn" style="background-color: #b21d19; color: white; font-size:x-large;" data-toggle="modal" data-target="#staticBackdrop">
+                          <button type="button" id="btnAgregarCarro" class="btn" style="background-color: #b21d19; color: white; font-size:x-large;" data-toggle="modal" data-target="#staticBackdrop">
                             Agregar al Carro
                         </button>
                           <!-- <a href="#" class="btn" style="background-color: #b21d19; color: white; font-size:x-large;">Agregar al Carro</a> -->
@@ -270,6 +270,24 @@
     <script src="js/popper.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/variables.js"></script>
     <script src="js/masDetalle.js"></script>
+
+    <script src="login/js/main.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="js/main.js"></script>
+    
+    
+    <!-- <script src="js/listadoClientes.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script> -->
+    <script src="https://cdn.datatables.net/1.11.1/js/jquery.dataTables.min.js"></script>
+    <link href="https://cdn.datatables.net/1.11.1/css/jquery.dataTables.min.css" rel="stylesheet" />
   </body>
 </html>

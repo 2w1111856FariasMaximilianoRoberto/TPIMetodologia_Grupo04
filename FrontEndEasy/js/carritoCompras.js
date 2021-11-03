@@ -40,6 +40,68 @@ document.addEventListener("DOMContentLoaded", function(event) {
     }
     
 
+    let productosSeleccionados = localStorage.getItem('productosSeleccionados');
+    if (productosSeleccionados) {
+        productosSeleccionados = JSON.parse(productosSeleccionados);
+    }
+    const cabecera= [];
+    const detalle= [];
+
+    productosSeleccionados.forEach(element => {
+        
+        const imagen = imagenes.find(o => o.idProducto === element.idProducto);
+        detalle.push(`<tr>
+        <!-- <th scope="row">${element.idProducto}</th> -->
+        <td>
+          <img
+            src="${imagen.png}"
+            alt=""
+            style="width: 75px; height: 75px"
+          />
+        </td>
+        <td>$${element.precioVenta}</td>
+        <td>
+          <p>
+            <input
+              type="number"
+              name="cantidadPoductos"
+              min="1"
+              max="100"
+              step="1"
+            />
+          </p>
+        </td>
+        <th scope="row">$170.000</th>
+        <th>
+          <a href="" class="adelete"
+            ><i class="fa fa-trash" aria-hidden="true">
+              Eliminar</i
+            ></a
+          >
+        </th>
+      </tr>`);
+    });
+
+    
+
+    const html = `<table class="table table-hover">
+    <thead>
+      <tr>
+        <!-- <th scope="col">#</th> -->
+        <th scope="col">Producto</th>
+        <th scope="col">Precio</th>
+        <th scope="col">Cantidad</th>
+        <th scope="col">Subtotal</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      
+      ${detalle.join('')}
+    </tbody>
+  </table>`;
+  $('#tblCarrito').html(html);
+
 
 
 
