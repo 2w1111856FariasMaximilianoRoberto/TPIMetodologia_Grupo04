@@ -18,9 +18,7 @@
     <link rel="shortcut icon" href="images/EasyLog.png"/>
     <!-- <link rel="stylesheet" href="css/carrito.css" /> -->
     <link rel="stylesheet" href="css/modal.css">
-
-    
-    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>
   </head>
   <body>
     <div class="wrapper d-flex align-items-stretch">
@@ -71,6 +69,9 @@
                   </div>
                   <div id="divListadoCliente">
                     <a href="listadoClientes.html" style="color: white;font-size: 16px;"><span class="fa fa-list-ul"></span> Listado Clientes</a>
+                  </div>
+                  <div id="divMiPedido">
+                    <a href="miPedido.html" style="color: white;font-size: 16px;"><span class="fa fa-list-ul"></span> Mi Pedido</a>
                   </div>
                 </div>
               </div>
@@ -168,200 +169,252 @@
           />
         </div>
 
-        <div class="container">
-          <h3>Mi Carro de Compras</h3>
-
-          <div class="row">
-            <div class="col-8">
-              <div class="card" id="tblCarrito" style="width: 47.5rem">
-                <!-- <table class="table table-hover">
-                  <thead>
-                    <tr>
-                      
-                      <th scope="col">Producto</th>
-                      <th scope="col">Precio</th>
-                      <th scope="col">Cantidad</th>
-                      <th scope="col">Subtotal</th>
-                      <th scope="col"></th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      
-                      <td>
-                        <img
-                          src="images/parrillaGas.jpeg"
-                          alt=""
-                          style="width: 75px; height: 75px"
-                        />
-                      </td>
-                      <td>$170.000</td>
-                      <td>
-                        <p>
-                          <input
-                            type="number"
-                            name="cantidadPoductos"
-                            min="1"
-                            max="100"
-                            step="1"
-                          />
-                        </p>
-                      </td>
-                      <th scope="row">$170.000</th>
-                      <th>
-                        <a href="" class="adelete"
-                          ><i class="fa fa-trash" aria-hidden="true">
-                            Eliminar</i
-                          ></a
-                        >
-                      </th>
-                    </tr>
-                    <tr>
-                      
-                      <td>
-                        <img
-                          src="images/silla.jpeg"
-                          alt=""
-                          style="width: 75px; height: 75px"
-                        />
-                      </td>
-                      <td>$6.291</td>
-                      <td>
-                        <p>
-                          <input
-                            type="number"
-                            name="cantidadPoductos"
-                            min="1"
-                            max="100"
-                            step="1"
-                          />
-                        </p>
-                      </td>
-                      <th scope="row">$37.746</th>
-                      <th>
-                        <a href="" class="adelete"
-                          ><i class="fa fa-trash" aria-hidden="true">
-                            Eliminar</i
-                          ></a
-                        >
-                      </th>
-                    </tr>
-                    <tr>
-                      
-                      <td>
-                        <img
-                          src="images/camaElastica.jpeg"
-                          alt=""
-                          style="width: 75px; height: 75px"
-                        />
-                      </td>
-                      <td>$40.491</td>
-                      <td>
-                        <p>
-                          <input
-                            type="number"
-                            name="cantidadPoductos"
-                            min="1"
-                            max="100"
-                            step="1"
-                          />
-                        </p>
-                      </td>
-                      <th scope="row">$40.491</th>
-                      <th>
-                        <a href="" class="adelete"
-                          ><i class="fa fa-trash" aria-hidden="true">
-                            Eliminar</i
-                          ></a
-                        >
-                      </th>
-                    </tr>
-                  </tbody>
-                </table> -->
-              </div>
-            </div>
-            <div class="ml-5">
-              <div class="card">
-                <div class="card-body">
-                  <h6 class="card-title" style="font: bold">
-                    Resumen del Pedido
-                  </h6>
-                  <hr
-                    style="
-                      border: none;
-                      height: 2px;
-                      color: #dee2e6;
-                      background-color: #dee2e6;
-                    "
-                  />
-
-                  <div class="d-flex justify-content-between">
-                    <div>
-                      <p style="display: inline-block">Subtotal</p>
-                    </div>
-                    <div>
-                      <p
+        <div class="container" id="imprimir">
+          <h3>Resumen de Pedido</h3>
+        <!-- <div class="col-12"> -->
+            <div class="row">
+                <div class="col-7" style="margin-right: 80px;">
+                  <div class="card" id="tblCarrito" style="width: 45.5rem">
+                    <!-- <table class="table table-hover">
+                      <thead>
+                        <tr>
+                          
+                          <th scope="col">Producto</th>
+                          <th scope="col">Precio</th>
+                          <th scope="col">Cantidad</th>
+                          <th scope="col">Subtotal</th>
+                          <th scope="col"></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          
+                          <td>
+                            <img
+                              src="images/parrillaGas.jpeg"
+                              alt=""
+                              style="width: 75px; height: 75px"
+                            />
+                          </td>
+                          <td>$170.000</td>
+                          <td>
+                            <p>
+                              <input
+                                type="number"
+                                name="cantidadPoductos"
+                                min="1"
+                                max="100"
+                                step="1"
+                              />
+                            </p>
+                          </td>
+                          <th scope="row">$170.000</th>
+                          <th>
+                            <a href="" class="adelete"
+                              ><i class="fa fa-trash" aria-hidden="true">
+                                Eliminar</i
+                              ></a
+                            >
+                          </th>
+                        </tr>
+                        <tr>
+                          
+                          <td>
+                            <img
+                              src="images/silla.jpeg"
+                              alt=""
+                              style="width: 75px; height: 75px"
+                            />
+                          </td>
+                          <td>$6.291</td>
+                          <td>
+                            <p>
+                              <input
+                                type="number"
+                                name="cantidadPoductos"
+                                min="1"
+                                max="100"
+                                step="1"
+                              />
+                            </p>
+                          </td>
+                          <th scope="row">$37.746</th>
+                          <th>
+                            <a href="" class="adelete"
+                              ><i class="fa fa-trash" aria-hidden="true">
+                                Eliminar</i
+                              ></a
+                            >
+                          </th>
+                        </tr>
+                        <tr>
+                          
+                          <td>
+                            <img
+                              src="images/camaElastica.jpeg"
+                              alt=""
+                              style="width: 75px; height: 75px"
+                            />
+                          </td>
+                          <td>$40.491</td>
+                          <td>
+                            <p>
+                              <input
+                                type="number"
+                                name="cantidadPoductos"
+                                min="1"
+                                max="100"
+                                step="1"
+                              />
+                            </p>
+                          </td>
+                          <th scope="row">$40.491</th>
+                          <th>
+                            <a href="" class="adelete"
+                              ><i class="fa fa-trash" aria-hidden="true">
+                                Eliminar</i
+                              ></a
+                            >
+                          </th>
+                        </tr>
+                      </tbody>
+                    </table> -->
+                  </div>
+                </div>
+                <div class="col-4">
+                  <div class="card">
+                    <div class="card-body">
+                      <h6 class="card-title" style="font: bold">
+                        Resumen del Pedido
+                      </h6>
+                      <hr
                         style="
-                          display: inline-block;
-                          justify-content: space-between;
+                          border: none;
+                          height: 2px;
+                          color: #dee2e6;
+                          background-color: #dee2e6;
                         "
-                        id="subTotal"
+                      />
+                      <div class="d-flex justify-content-between">
+                        <div>
+                          <p style="display: inline-block">Fecha:</p>
+                        </div>
+                        <div>
+                          <p
+                            style="
+                              display: inline-block;
+                              justify-content: space-between;
+                            "
+                            id=""
+                          >
+                            09/11/2021
+                          </p>
+                        </div>
+                      </div>
+                      <div class="d-flex justify-content-between">
+                        <div>
+                          <p style="display: inline-block">Pedido Número:</p>
+                        </div>
+                        <div>
+                          <p
+                            style="
+                              display: inline-block;
+                              justify-content: space-between;
+                            "
+                            id=""
+                          >
+                            0001
+                          </p>
+                        </div>
+                      </div>
+                      <div class="d-flex justify-content-between">
+                        <div>
+                          <p style="display: inline-block">Estado:</p>
+                        </div>
+                        <div>
+                          <p
+                            style="
+                              display: inline-block;
+                              justify-content: space-between;
+                            "
+                            id=""
+                          >
+                            En preparación
+                          </p>
+                        </div>
+                      </div>
+                      <div class="d-flex justify-content-between">
+                        <div>
+                          <p style="display: inline-block">Forma de Pago:</p>
+                        </div>
+                        <div>
+                          <p
+                            style="
+                              display: inline-block;
+                              justify-content: space-between;
+                            "
+                          >
+                            Tarjeta Crédito
+                          </p>
+                        </div>
+                      </div>
+                      <div class="d-flex justify-content-between">
+                        <div>
+                          <p style="display: inline-block">Cantidad de Cuotas:</p>
+                        </div>
+                        <div>
+                          <p
+                            style="
+                              display: inline-block;
+                              justify-content: space-between;
+                            "
+                          >
+                            3
+                          </p>
+                        </div>
+                      </div>
+                      <div class="d-flex justify-content-between">
+                        <div>
+                          <h5 style="display: inline-block">Total</h5>
+                        </div>
+                        <div>
+                          <h5
+                            style="
+                              display: inline-block;
+                              justify-content: space-between;
+                            "
+                            id="total"
+                            
+                          >
+                            
+                          </h5>
+                        </div>
+                      </div>
+                      <br>
+                      <div class="d-flex justify-right">
+                          <div>
+                            <button
+                        type="button"
+                        class="btn btn-lg"
+                        style="
+                          background-color: #b21d19;
+                          color: white;
+                          /* font-size: x-large; */
+                        "
+                        onclick="pruebaDivAPdf();"
                       >
-                        
-                      </p>
+                        Imprimir
+                      </button>
+                          </div>
+                      </div>
+                      
+                      <!-- <a href="#" class="btn" style="background-color: #b21d19; color: white; font-size:x-large;">Agregar al Carro</a> -->
                     </div>
                   </div>
-                  <div class="d-flex justify-content-between">
-                    <div>
-                      <p style="display: inline-block">Descuento</p>
-                    </div>
-                    <div>
-                      <p
-                        style="
-                          display: inline-block;
-                          justify-content: space-between;
-                        "
-                      >
-                        $0
-                      </p>
-                    </div>
-                  </div>
-                  <div class="d-flex justify-content-between">
-                    <div>
-                      <h5 style="display: inline-block">Total</h5>
-                    </div>
-                    <div>
-                      <h5
-                        style="
-                          display: inline-block;
-                          justify-content: space-between;
-                        "
-                        id="total"
-                        
-                      >
-                        
-                      </h5>
-                    </div>
-                  </div>
-
-                  <button
-                    type="button"
-                    class="btn"
-                    style="
-                      background-color: #b21d19;
-                      color: white;
-                      font-size: x-large;
-                    "
-                    data-toggle="modal"
-                    data-target="#exampleModal"
-                  >
-                    Realizar Compra
-                  </button>
-                  <!-- <a href="#" class="btn" style="background-color: #b21d19; color: white; font-size:x-large;">Agregar al Carro</a> -->
                 </div>
               </div>
-            </div>
-          </div>
+        <!-- </div> -->
+          
           
         </div>
 
@@ -459,8 +512,6 @@
                           <ul>
                             <li>Master Card</li>
                             <li>American Express</li>
-                            <li>Cencosud</li>
-                            <li>Mercado pago</li>
                             </ul></div>
                           </div>
                          </td></tr>
@@ -472,22 +523,14 @@
                       <input class='input-field'></input>
                       <table class='half-input-table'>
                         <tr>
-                          <td> Expira (MM/AA)
+                          <td> Expira
                             <input class='input-field'></input>
                           </td>
-                          <td>CVC 
-                            <input class='input-field2'></input>
-                            
+                          <td>CVC
+                            <input class='input-field'></input>
                           </td>
                         </tr>
                       </table>
-                      Cantidad de Cuotas
-                      <select class="input-field" name="" id="" style="background-color: #5794e0;">
-                        <option value="" >1 Cuota</option>
-                        <option value="">3 Cuotas</option>
-                        <option value="">6 Cuotas</option>
-                        <option value="">12 Cuotas</option>
-                      </select>
                       <button id="btnPagar" class='pay-btn' onclick="pagoExitoso()">Pagar</button>
           
                     </div>
@@ -523,8 +566,8 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="js/main.js"></script>
-    <script src="js/carritoCompras.js"></script>
-    <script src="js/formaPago.js"></script>
+    <script src="js/miPedido.js"></script>
+    <!-- <script src="js/formaPago.js"></script> -->
     <script src="js/variables.js"></script>
   </body>
 </html>

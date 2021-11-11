@@ -36,6 +36,20 @@ window.onclick = function(e) {
       e.target.innerHTML = document.getElementById('current-card').innerHTML;
       document.getElementById('current-card').innerHTML = 'Visa';
     }
+    else if (e.target.innerHTML === 'Cencosud') {
+      document.getElementById('credit-card-image').src = 'https://www.activartarjeta.com.ar/wp-content/uploads/2021/05/imagen-9.jpg';
+       activeDropdown.classList.remove('visible');
+      activeDropdown = null;
+      e.target.innerHTML = document.getElementById('current-card').innerHTML;
+      document.getElementById('current-card').innerHTML = 'Cencosud';
+    }
+    else if (e.target.innerHTML === 'Mercado pago') {
+      document.getElementById('credit-card-image').src = 'https://infonegocios.info/uploads/mercado-pago-logo-millon-de-tarjetas-interna-cba.jpg';
+       activeDropdown.classList.remove('visible');
+      activeDropdown = null;
+      e.target.innerHTML = document.getElementById('current-card').innerHTML;
+      document.getElementById('current-card').innerHTML = 'Mercado pago';
+    }
   }
   else if (e.target.className !== 'dropdown-btn' && activeDropdown) {
     activeDropdown.classList.remove('visible');

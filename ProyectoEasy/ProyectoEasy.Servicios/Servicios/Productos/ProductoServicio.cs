@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ProyectoEasy.Domain.Entities;
 using ProyectoEasy.Infraestructura;
+using ProyectoEasy.Servicios.Dtos;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -38,11 +39,35 @@ namespace ProyectoEasy.Aplicacion.Servicios
             return producto;
         }
 
-        public async Task<List<Productos>> Get()
+        public async Task<List<ProductosDto>> Get()
         {
             var productos = await _context.Productos.ToListAsync();
+            //var marcas = await _context.Marcas.ToListAsync();
+            //var rubros = await _context.Rubros.ToListAsync();
+            var productosDto = new List<ProductosDto>();
+            
 
-            return productos;
+            foreach (var x in productos)
+            {
+                var marca = await _context.Marcas.SingleOrDefaultAsync(m => m.IdMarca == x.IdMarca);
+                var rubro = await _context.Rubros.SingleOrDefaultAsync(r => r.IdRubro == x.IdRubro);
+                var producto = new ProductosDto
+                {
+                    IdProducto = x.IdProducto,
+                    Descripcion = x.Descripcion,
+                    Color = x.Color,
+                    Dimenciones = x.Dimenciones,
+                    Modelo = x.Modelo,
+                    PrecioCompra = x.PrecioCompra,
+                    PrecioVenta = x.PrecioVenta,
+                    Marca = marca.Descripcion,
+                    Rubro = rubro.Descripcion,
+                    Stock = x.Stock
+                };
+                productosDto.Add(producto);
+            }
+
+            return productosDto;
         }
 
         public async Task<Productos> GetById(int id)

@@ -1,16 +1,15 @@
 ﻿using ProyectoEasy.Domain.Entities;
-using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace ProyectoEasy.Aplicacion.Servicios
 {
-   public interface ITipoDocumentoServicio
+    public interface ITipoDocumentoServicio
     {
         Task<TipoDocumentos> Crear(TipoDocumentos cliente);
 
         Task<List<TipoDocumentos>> Get();
+
 
         Task<TipoDocumentos> GetById(int id);
 

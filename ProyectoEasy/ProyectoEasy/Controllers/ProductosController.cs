@@ -23,7 +23,7 @@ namespace ProyectoEasy.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<Productos>>> Get()
+        public async Task<ActionResult<List<ProductosDto>>> Get()
         {
             try
             {

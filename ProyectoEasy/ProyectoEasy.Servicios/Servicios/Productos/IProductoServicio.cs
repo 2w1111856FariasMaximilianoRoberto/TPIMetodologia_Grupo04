@@ -1,4 +1,5 @@
 ﻿using ProyectoEasy.Domain.Entities;
+using ProyectoEasy.Servicios.Dtos;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -8,7 +9,7 @@ namespace ProyectoEasy.Aplicacion.Servicios
     {
         Task<Productos> Crear(Productos producto);
 
-        Task<List<Productos>> Get();
+        Task<List<ProductosDto>> Get();
 
         Task<Productos> GetById(int id);
 

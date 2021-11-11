@@ -1,6 +1,8 @@
 document.addEventListener("DOMContentLoaded", function(event) { 
     let objetoCliente = localStorage.getItem("objetoCliente");
-    console.log(JSON.parse(objetoCliente));
+    // console.log(JSON.parse(objetoCliente));
+    
+    
 
 
     let divUsuario = document.getElementById('divUsuario');
@@ -64,31 +66,37 @@ function login(){
     nombreUsuario = document.getElementById('txtNombreUsuario').value;
     password = document.getElementById('txtPassword').value;
     
-    console.log(nombreUsuario, password);
 
-    comando  = {
-        "nombreUsuario":nombreUsuario,
-        "contraseña":password
-    };
+    // let usuarios = JSON.parse(localStorage.getItem("objetoCliente"));
+    let usuario = objetoCliente.find(element => element.nombreUsuario === nombreUsuario);
+    localStorage.setItem("Cliente",JSON.stringify(usuario));
+    window.location.replace('index.html');
+    
+    // console.log(nombreUsuario, password);
+
+    // comando  = {
+    //     "nombreUsuario":nombreUsuario,
+    //     "contraseña":password
+    // };
 
 
-    $.ajax({
-        url: "https://localhost:44375/Clientes/Login",
-        type: "POST",
-        dataType: 'json',
-        contentType: "application/json",
-        data: JSON.stringify(comando), 
-        success: function (response){ 
-            console.log(response);
-            let cliente = response;
-            localStorage.setItem("objetoCliente",JSON.stringify(cliente));
-            window.location.replace('index.html');
-            // let objetoCliente = localStorage.getItem("objetoCliente");
-            // console.log(JSON.parse(objetoCliente));
-            // console.log(JSON.parse(objetoCliente).nombreCliente);
-        },
-        error: function(error){
-            console.log(error.responseJSON.errors);
-        }
-    });
+    // $.ajax({
+    //     url: "https://localhost:44375/Clientes/Login",
+    //     type: "POST",
+    //     dataType: 'json',
+    //     contentType: "application/json",
+    //     data: JSON.stringify(comando), 
+    //     success: function (response){ 
+    //         console.log(response);
+    //         let cliente = response;
+    //         localStorage.setItem("objetoCliente",JSON.stringify(cliente));
+    //         window.location.replace('index.html');
+    //         // let objetoCliente = localStorage.getItem("objetoCliente");
+    //         // console.log(JSON.parse(objetoCliente));
+    //         // console.log(JSON.parse(objetoCliente).nombreCliente);
+    //     },
+    //     error: function(error){
+    //         console.log(error.responseJSON.errors);
+    //     }
+    // });
 }

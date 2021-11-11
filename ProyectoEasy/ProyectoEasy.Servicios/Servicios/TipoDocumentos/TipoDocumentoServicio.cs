@@ -3,7 +3,6 @@ using ProyectoEasy.Domain.Entities;
 using ProyectoEasy.Infraestructura;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace ProyectoEasy.Aplicacion.Servicios
@@ -12,6 +11,10 @@ namespace ProyectoEasy.Aplicacion.Servicios
     {
         private readonly PedidosEasyContext _context;
 
+        public TipoDocumentoServicio()
+        {
+
+        }
         public TipoDocumentoServicio(PedidosEasyContext pedidosEasyContext)
         {
             _context = pedidosEasyContext;
@@ -45,6 +48,7 @@ namespace ProyectoEasy.Aplicacion.Servicios
             return tipo;
         }
 
+
         public async Task<TipoDocumentos> GetById(int id)
         {
             var tipo = await _context.TipoDocumentos.SingleOrDefaultAsync(t => t.IdTipoDocumento == id);
@@ -58,7 +62,7 @@ namespace ProyectoEasy.Aplicacion.Servicios
             if (tipo != null)
             {
                 tipo.Descripcion = t.Descripcion;
-                
+
                 var resultado = await _context.SaveChangesAsync();
             }
             return tipo;

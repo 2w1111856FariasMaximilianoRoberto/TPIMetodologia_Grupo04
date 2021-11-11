@@ -7,6 +7,7 @@ using ProyectoEasy.Domain.Entities;
 using ProyectoEasy.Infraestructura;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace ProyectoEasy.Controllers
@@ -17,9 +18,11 @@ namespace ProyectoEasy.Controllers
     public class PedidosController : ControllerBase
     {
         private readonly IPedidoServicio _pedidoServicio;
-        public PedidosController(IPedidoServicio pedidoServicio)
+        private readonly PedidosEasyContext _context;
+        public PedidosController(IPedidoServicio pedidoServicio, PedidosEasyContext context)
         {
             _pedidoServicio = pedidoServicio;
+            _context = context;
         }
 
         [HttpGet]
@@ -28,7 +31,7 @@ namespace ProyectoEasy.Controllers
             try
             {
                 var pedidos = await _pedidoServicio.Get();
-                
+
                 if (pedidos != null)
                 {
                     var respuesta = pedidos.Adapt<PedidoDto>();
@@ -39,6 +42,46 @@ namespace ProyectoEasy.Controllers
                 {
                     return BadRequest();
                 }
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpGet("{fecha1},{fecha2}")]
+        public async Task<ActionResult<double>> GetReporteTotalPorFecha(DateTime fecha1, DateTime fecha2)
+        {
+            try
+            {
+                var reporte = await _context.Pedidos.Where(x => x.Fecha >= fecha1 && x.Fecha <= fecha2).ToListAsync();
+                var detalles = await _context.DetallePedidos.ToListAsync();
+
+                double total = 0;
+
+                foreach (var x in reporte)
+                {
+                    foreach (var i in detalles)
+                    {
+                        if (x.IdPedido == i.IdPedido)
+                        {
+                            total += i.Cantidad * i.PrecioUnitario;
+                        }
+                    }
+                }
+                return total;
+
+                //if (pedidos != null)
+                //{
+                //    var respuesta = pedidos.Adapt<PedidoDto>();
+
+                //    return Ok(respuesta);
+                //}
+                //else
+                //{
+                //    return BadRequest();
+                //}
             }
             catch (Exception ex)
             {

@@ -1,14 +1,12 @@
-﻿using Microsoft.AspNetCore.Cors;
+﻿using Mapster;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using ProyectoEasy.Aplicacion.Servicios;
+using ProyectoEasy.Aplicacion.Servicios.Dtos;
 using ProyectoEasy.Domain.Entities;
-using ProyectoEasy.Infraestructura;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using ProyectoEasy.Aplicacion.Servicios.Dtos;
-using Mapster;
 
 namespace ProyectoEasy.Controllers
 {
@@ -108,22 +106,23 @@ namespace ProyectoEasy.Controllers
         {
             try
             {
-                var tipo = new TipoDocumentos { 
-                
+                var tipo = new TipoDocumentos
+                {
+
                     Descripcion = t.Descripcion,
                 };
-                    
-                var resultado= await _tipoDocuentoServicio.Actualizar(tipo);
+
+                var resultado = await _tipoDocuentoServicio.Actualizar(tipo);
 
                 if (resultado != null)
                 {
-                   
-                        return Ok(tipo);
-                    }
-                    else
-                    {
-                        return BadRequest();
-                    }
+
+                    return Ok(tipo);
+                }
+                else
+                {
+                    return BadRequest();
+                }
 
             }
             catch (Exception ex)
@@ -148,7 +147,6 @@ namespace ProyectoEasy.Controllers
                 return BadRequest(ex.Message);
             }
         }
-
 
 
     }

@@ -9,9 +9,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProyectoEasy.Aplicacion", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestUnitario", "TestUnitario\TestUnitario.csproj", "{E1EFA729-015F-4B4D-ABA7-998C6C909705}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProyectoEasy.Domain", "ProyectoEasy.Domain\ProyectoEasy.Domain.csproj", "{D68BC9D4-722E-4EA7-A6B4-D83C0A4E4206}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProyectoEasy.Domain", "ProyectoEasy.Domain\ProyectoEasy.Domain.csproj", "{D68BC9D4-722E-4EA7-A6B4-D83C0A4E4206}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProyectoEasy.Infraestructura", "ProyectoEasy.Infraestructura\ProyectoEasy.Infraestructura.csproj", "{92AC76C3-2413-4A55-A879-EB47CEB9C4DD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProyectoEasy.Infraestructura", "ProyectoEasy.Infraestructura\ProyectoEasy.Infraestructura.csproj", "{92AC76C3-2413-4A55-A879-EB47CEB9C4DD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthTest", "AuthTest\AuthTest.csproj", "{235027A2-4A1C-406F-9B20-FCEC9C260A2C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{92AC76C3-2413-4A55-A879-EB47CEB9C4DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{92AC76C3-2413-4A55-A879-EB47CEB9C4DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{92AC76C3-2413-4A55-A879-EB47CEB9C4DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{235027A2-4A1C-406F-9B20-FCEC9C260A2C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{235027A2-4A1C-406F-9B20-FCEC9C260A2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{235027A2-4A1C-406F-9B20-FCEC9C260A2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{235027A2-4A1C-406F-9B20-FCEC9C260A2C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
